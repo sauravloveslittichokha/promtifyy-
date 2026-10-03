@@ -75,10 +75,109 @@
       pointer-events: none;
     }
 
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.75fr);
+      align-items: center;
+      gap: clamp(2rem, 6vw, 5.5rem);
+    }
+
+    .hero-mark {
+      width: min(100%, 16rem);
+      padding: 1rem;
+      margin: 0 auto 1.25rem;
+      border: 1px solid rgba(148,163,184,0.22);
+      border-radius: 1.5rem;
+      background: linear-gradient(145deg, rgba(24,28,42,0.95), rgba(9,10,15,0.9));
+      box-shadow: 0 24px 70px rgba(0,82,255,0.18);
+    }
+
+    .hero-mark img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 0.75rem;
+    }
+
+    .hero-path-card {
+      position: relative;
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      border: 1px solid rgba(148,163,184,0.22);
+      border-radius: 1.5rem;
+      background: linear-gradient(150deg, rgba(24,28,42,0.95), rgba(14,17,24,0.96));
+      box-shadow: 0 28px 80px rgba(0,0,0,0.32), 0 0 48px rgba(0,82,255,0.12);
+    }
+
+    .hero-path-card::before {
+      content: "";
+      position: absolute;
+      top: 2.8rem;
+      bottom: 2.8rem;
+      left: 2.42rem;
+      width: 1px;
+      background: linear-gradient(var(--brand-yellow), var(--brand-blue), rgba(148,163,184,0.2));
+    }
+
+    .hero-path-title {
+      margin-bottom: 1.1rem;
+      color: #94a3b8;
+      font: 800 0.68rem/1.4 "SFMono-Regular", Consolas, monospace;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .hero-path-step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 2rem minmax(0, 1fr);
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 0;
+    }
+
+    .hero-path-step b {
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid rgba(255,229,0,0.45);
+      border-radius: 50%;
+      background: #111520;
+      color: var(--brand-yellow);
+      font: 800 0.68rem/1 "SFMono-Regular", Consolas, monospace;
+    }
+
+    .hero-path-step strong {
+      display: block;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    .hero-path-step span {
+      display: block;
+      margin-top: 0.2rem;
+      color: #94a3b8;
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 767px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-path-card {
+        width: 100%;
+      }
+    }
+
     .timeline-shell {
       position: relative;
       max-width: 1100px;
       margin: 0 auto;
+      padding: 0 1rem;
     }
 
     .timeline-shell::before {
@@ -98,8 +197,8 @@
       display: grid;
       grid-template-columns: minmax(0,1fr) 56px minmax(0,1fr);
       align-items: center;
-      margin-bottom: 2rem;
-      min-height: 120px;
+      margin-bottom: 2.5rem;
+      min-height: 150px;
     }
 
     .year-card:nth-child(even) .year-content {
@@ -135,8 +234,9 @@
     }
 
     .year-dot {
-      position: relative;
+      position: absolute;
       left: 50%;
+      top: 2rem;
       width: 22px;
       height: 22px;
       border-radius: 50%;
@@ -145,6 +245,75 @@
       box-shadow: 0 0 24px rgba(0,82,255,0.5);
       transform: translateX(-50%);
       z-index: 1;
+    }
+
+    .milestone-list {
+      display: grid;
+      gap: 0.65rem;
+      margin-top: 1rem;
+    }
+
+    .milestone-row {
+      display: grid;
+      grid-template-columns: 2rem minmax(0, 1fr);
+      align-items: start;
+      gap: 0.75rem;
+      color: #dbeafe;
+      font-size: 0.84rem;
+      line-height: 1.55;
+    }
+
+    .milestone-number {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 0.7rem;
+      background: rgba(0,82,255,0.14);
+      border: 1px solid rgba(30,107,255,0.3);
+      color: var(--brand-yellow);
+      font: 800 0.68rem/1 "SFMono-Regular", Consolas, monospace;
+    }
+
+    .roadmap-overview {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      max-width: 960px;
+      margin: 0 auto 4rem;
+      gap: 0.75rem;
+    }
+
+    .overview-step {
+      position: relative;
+      min-height: 102px;
+      padding: 1rem;
+      border: 1px solid rgba(148,163,184,0.2);
+      border-radius: 16px;
+      background: rgba(20,23,34,0.68);
+      text-decoration: none;
+      transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    }
+
+    .overview-step:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255,229,0,0.5);
+      background: rgba(24,28,42,0.95);
+    }
+
+    .overview-step span {
+      display: block;
+      color: var(--brand-yellow);
+      font: 800 0.65rem/1.4 "SFMono-Regular", Consolas, monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .overview-step strong {
+      display: block;
+      color: white;
+      font-size: 0.88rem;
+      line-height: 1.35;
+      margin-top: 0.45rem;
     }
 
     .year-chip {
@@ -316,6 +485,7 @@
     }
 
     .project-card {
+      min-width: 0;
       background: rgba(24, 28, 42, 0.9);
       border: 1px solid rgba(148,163,184,0.18);
       border-radius: 18px;
@@ -327,6 +497,7 @@
       font-weight: 800;
       color: white;
       margin: 0 0 0.7rem;
+      overflow-wrap: anywhere;
     }
 
     .project-card p {
@@ -355,6 +526,7 @@
 
     .project-card .links {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       gap: 0.75rem;
@@ -397,14 +569,27 @@
       font-size: 0.9rem;
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
     @media (max-width: 767px) {
+      .timeline-shell {
+        padding: 0;
+      }
+
       .timeline-shell::before {
-        left: 1.5rem;
+        left: 0.7rem;
       }
 
       .year-card {
         grid-template-columns: 1fr;
-        padding-left: 2.4rem;
+        padding-left: 1.7rem;
       }
 
       .year-content,
@@ -413,14 +598,37 @@
       }
 
       .year-dot {
-        left: 1.5rem;
-        transform: none;
+        left: 0.7rem;
+        top: 2rem;
       }
 
       .semester-grid,
       .project-grid,
       .job-checklist {
         grid-template-columns: 1fr;
+      }
+
+      .roadmap-overview {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-bottom: 3rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero-mark {
+        width: min(100%, 13rem);
+      }
+
+      .hero-layout h1 {
+        font-size: clamp(1.25rem, 7.4vw, 2rem);
+      }
+
+      .roadmap-overview {
+        grid-template-columns: 1fr;
+      }
+
+      .overview-step {
+        min-height: 0;
       }
     }
   </style>
@@ -441,6 +649,7 @@
         <a class="hover:text-brand-yellow transition-colors" href="#year-1">Year 1</a>
         <a class="hover:text-brand-yellow transition-colors" href="#year-2">Year 2</a>
         <a class="hover:text-brand-yellow transition-colors" href="#year-3">Year 3</a>
+        <a class="hover:text-brand-yellow transition-colors" href="#year-4">Year 4</a>
         <a class="hover:text-brand-yellow transition-colors" href="#final-cta">Job Ready</a>
       </nav>
 
@@ -457,54 +666,47 @@
       <div class="hero-glow top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand-blue/20"></div>
       <div class="hero-glow top-1/3 left-1/4 w-72 h-72 bg-brand-yellow/15"></div>
 
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <div class="mb-8">
-          <img alt="NYS Hero Logo" class="h-28 md:h-36 w-auto object-contain mx-auto filter drop-shadow-[0_10px_30px_rgba(0,68,255,0.5)] transform hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB2DQz2PLLcK6Kb8Gu2WpucFTmRptmoFXKXSoWw0jID9x0Zp8lW8mthXxydxe8vt8YzTmH5SwzsjPJ90sXB4qjPCUuify24BjZHbt2RGWcOtjTB9Zi0tbas_yvRDoUdbv9dZOS8q58K7-4aDtQMQMP6br_1I8LJ02O2neMNT3LN-soc3ixtdw1EWY7ictfWv8Aj3NAqHI4aKV3laaE0At7fBLR-_QCwLFE_nlEbR4wIMBiUoexmHKuyhyFePTqlm_OaQ"/>
-        </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="hero-layout">
+          <div class="text-center md:text-left">
+            <div class="hero-mark">
+              <img alt="NYS — Not Your School" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB2DQz2PLLcK6Kb8Gu2WpucFTmRptmoFXKXSoWw0jID9x0Zp8lW8mthXxydxe8vt8YzTmH5SwzsjPJ90sXB4qjPCUuify24BjZHbt2RGWcOtjTB9Zi0tbas_yvRDoUdbv9dZOS8q58K7-4aDtQMQMP6br_1I8LJ02O2neMNT3LN-soc3ixtdw1EWY7ictfWv8Aj3NAqHI4aKV3laaE0At7fBLR-_QCwLFE_nlEbR4wIMBiUoexmHKuyhyFePTqlm_OaQ"/>
+            </div>
 
-        <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-brand-surface/90 border border-brand-yellow/30 text-brand-yellow text-xs font-semibold mb-6 shadow-sm">
-          <span>⚡ NYS</span>
-          <span class="text-slate-400">•</span>
-          <span class="text-slate-300 font-normal">A 4-Year Roadmap to Job Readiness</span>
-        </div>
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-brand-surface/90 border border-brand-yellow/30 text-brand-yellow text-xs font-semibold mb-6 shadow-sm">
+              <span>⚡ NYS</span>
+              <span class="text-slate-400">•</span>
+              <span class="text-slate-300 font-normal">A 4-Year Roadmap to Job Readiness</span>
+            </div>
 
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 uppercase leading-tight">
-          FROM COLLEGE TO<br class="hidden sm:block"/>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow via-amber-300 to-brand-blue-light">
-            HIGH-PACKAGE IT JOB
-          </span>
-        </h1>
+            <h1 class="text-4xl sm:text-5xl xl:text-6xl font-extrabold tracking-tight text-white mb-6 uppercase leading-tight">
+              FROM COLLEGE TO<br class="hidden sm:block"/>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow via-amber-300 to-brand-blue-light">
+                HIGH-PACKAGE<br class="hidden lg:block"/> IT JOB
+              </span>
+            </h1>
 
-        <p class="max-w-3xl mx-auto text-base sm:text-lg lg:text-xl text-slate-300 font-normal mb-10 leading-relaxed">
-          A structured 4-year roadmap to build the skills, projects and experience needed for a software/IT career.
-        </p>
+            <p class="max-w-2xl mx-auto md:mx-0 text-base sm:text-lg text-slate-300 font-normal mb-8 leading-relaxed">
+              A structured 4-year roadmap to build the skills, projects and experience needed for a software/IT career.
+            </p>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <a class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-sm tracking-wider uppercase bg-brand-blue hover:bg-brand-blue-light text-white shadow-glow-blue transition-all duration-200 hover:-translate-y-1" href="#roadmap-section">
-            START ROADMAP
-          </a>
-          <a class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-sm tracking-wider uppercase bg-brand-card hover:bg-brand-surface border border-brand-yellow/40 hover:border-brand-yellow text-brand-yellow transition-all duration-200 hover:-translate-y-1 shadow-sm" href="#year-1">
-            EXPLORE ROADMAP
-          </a>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6 border-t border-brand-border/60">
-          <div class="p-3 bg-brand-card/50 rounded-lg border border-brand-border text-left">
-            <div class="text-xl font-extrabold text-brand-yellow font-mono">4</div>
-            <div class="text-xs text-slate-400 mt-1">Years</div>
+            <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+              <a class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-sm tracking-wider uppercase bg-brand-blue hover:bg-brand-blue-light text-white shadow-glow-blue transition-all duration-200 hover:-translate-y-1" href="#roadmap-section">
+                START ROADMAP
+              </a>
+              <a class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-sm tracking-wider uppercase bg-brand-card hover:bg-brand-surface border border-brand-yellow/40 hover:border-brand-yellow text-brand-yellow transition-all duration-200 hover:-translate-y-1 shadow-sm" href="#year-1">
+                EXPLORE ROADMAP
+              </a>
+            </div>
           </div>
-          <div class="p-3 bg-brand-card/50 rounded-lg border border-brand-border text-left">
-            <div class="text-xl font-extrabold text-brand-blue-light font-mono">DSA</div>
-            <div class="text-xs text-slate-400 mt-1">Core skill</div>
-          </div>
-          <div class="p-3 bg-brand-card/50 rounded-lg border border-brand-border text-left">
-            <div class="text-xl font-extrabold text-brand-yellow font-mono">Projects</div>
-            <div class="text-xs text-slate-400 mt-1">Real world</div>
-          </div>
-          <div class="p-3 bg-brand-card/50 rounded-lg border border-brand-border text-left">
-            <div class="text-xl font-extrabold text-brand-blue-light font-mono">Job</div>
-            <div class="text-xs text-slate-400 mt-1">Ready</div>
-          </div>
+
+          <aside class="hero-path-card" aria-label="Roadmap at a glance">
+            <p class="hero-path-title">Your path, year by year</p>
+            <a class="hero-path-step" href="#year-1"><b>01</b><span><strong>Build your foundation</strong><span>Programming · Web · Git</span></span></a>
+            <a class="hero-path-step" href="#year-2"><b>02</b><span><strong>Master the fundamentals</strong><span>DSA · Core computer science</span></span></a>
+            <a class="hero-path-step" href="#year-3"><b>03</b><span><strong>Build and get experience</strong><span>Projects · Internship · Portfolio</span></span></a>
+            <a class="hero-path-step" href="#year-4"><b>04</b><span><strong>Get ready for the role</strong><span>Interviews · Applications · Offers</span></span></a>
+          </aside>
         </div>
       </div>
     </section>
@@ -515,6 +717,13 @@
         <p class="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight">From Fundamentals to Job Ready</p>
         <p class="text-slate-400 text-sm mt-3">A clean, focused growth path designed for students who want to become industry-ready for a software and IT career.</p>
       </div>
+
+      <nav class="roadmap-overview" aria-label="Jump to a roadmap year">
+        <a class="overview-step" href="#year-1"><span>01 / Year one</span><strong>Build the foundation</strong></a>
+        <a class="overview-step" href="#year-2"><span>02 / Year two</span><strong>Learn to solve problems</strong></a>
+        <a class="overview-step" href="#year-3"><span>03 / Year three</span><strong>Ship real projects</strong></a>
+        <a class="overview-step" href="#year-4"><span>04 / Year four</span><strong>Prepare for your role</strong></a>
+      </nav>
 
       <div class="timeline-shell">
         <div class="year-card" id="year-1">
@@ -540,7 +749,7 @@
                   <div class="semester-grid">
                     <div class="semester-box">
                       <h4>Semester 1</h4>
-                      <p>Programming fundamentals, logic building, computer fundamentals and problem solving.</p>
+                      <p>Choose one primary language and get comfortable writing small programs. Learn how to break a problem into steps, use variables, conditions, loops and functions, and practise clear explanations.</p>
                       <ul>
                         <li>Programming</li>
                         <li>Logic</li>
@@ -550,7 +759,7 @@
                     </div>
                     <div class="semester-box">
                       <h4>Semester 2</h4>
-                      <p>HTML, CSS, JavaScript basics, Git and GitHub, and foundational web development.</p>
+                      <p>Create and publish your first responsive website. Learn semantic HTML, CSS layout, JavaScript basics and Git workflows; document what you build in a simple README.</p>
                       <ul>
                         <li>HTML</li>
                         <li>CSS</li>
@@ -559,7 +768,12 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="outcome-box"><strong>Outcome:</strong> Build a strong technical foundation.</div>
+                  <div class="milestone-list" aria-label="Year one milestones">
+                    <div class="milestone-row"><span class="milestone-number">01</span><span>Write small programs independently and explain your approach.</span></div>
+                    <div class="milestone-row"><span class="milestone-number">02</span><span>Publish a responsive personal or college-club website.</span></div>
+                    <div class="milestone-row"><span class="milestone-number">03</span><span>Use Git to save work and maintain a clear project README.</span></div>
+                  </div>
+                  <div class="outcome-box"><strong>Year-end proof:</strong> a public website and a consistent set of beginner programs in GitHub.</div>
                 </div>
               </details>
             </div>
@@ -590,7 +804,7 @@
                   <div class="semester-grid">
                     <div class="semester-box">
                       <h4>Semester 3</h4>
-                      <p>Core programming, advanced DSA and practical challenge solving across arrays, strings, stacks and trees.</p>
+                      <p>Practise complexity analysis and the core data structures: arrays, strings, hash maps, linked lists, stacks, queues and trees. Build a regular problem-solving habit.</p>
                       <ul>
                         <li>DSA</li>
                         <li>Arrays</li>
@@ -600,7 +814,7 @@
                     </div>
                     <div class="semester-box">
                       <h4>Semester 4</h4>
-                      <p>Bit-level reasoning, graphs, recursion, dynamic programming and a strong base in DBMS, OS and OOP.</p>
+                      <p>Learn recursion, searching and sorting, graphs and introductory dynamic programming. Study OOP, DBMS, operating systems and networking alongside implementation practice.</p>
                       <ul>
                         <li>Graphs</li>
                         <li>Recursion</li>
@@ -609,7 +823,12 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="outcome-box"><strong>Outcome:</strong> Become strong at programming and problem solving.</div>
+                  <div class="milestone-list" aria-label="Year two milestones">
+                    <div class="milestone-row"><span class="milestone-number">01</span><span>Solve problems by recognising patterns, not memorising answers.</span></div>
+                    <div class="milestone-row"><span class="milestone-number">02</span><span>Explain time and space complexity and test edge cases.</span></div>
+                    <div class="milestone-row"><span class="milestone-number">03</span><span>Build one small application that uses a database or external API.</span></div>
+                  </div>
+                  <div class="outcome-box"><strong>Year-end proof:</strong> a structured DSA practice repository and a working application with a documented feature set.</div>
                 </div>
               </details>
             </div>
@@ -634,13 +853,13 @@
             </div>
 
             <div class="year-form">
-              <details class="year-details" open>
+              <details class="year-details">
                 <summary>Explore Year</summary>
                 <div class="year-expanded">
                   <div class="semester-grid">
                     <div class="semester-box">
                       <h4>Semester 5</h4>
-                      <p>Build full-stack applications, use databases and APIs, and learn industry-level project workflows.</p>
+                      <p>Choose a stack and build an application end to end: accessible UI, API, database, authentication basics, validation, error states and deployment.</p>
                       <ul>
                         <li>Full Stack</li>
                         <li>APIs</li>
@@ -650,7 +869,7 @@
                     </div>
                     <div class="semester-box">
                       <h4>Semester 6</h4>
-                      <p>Work on real projects, prepare resume, apply for internships and sharpen technical interview performance.</p>
+                      <p>Improve one project using feedback, write meaningful tests, practise pull requests and begin applying for internships with a concise resume.</p>
                       <ul>
                         <li>Projects</li>
                         <li>GitHub</li>
@@ -671,7 +890,7 @@
                       </div>
                       <div class="links">
                         <span>GitHub</span>
-                        <a href="#">Repo</a>
+                        <span>Example concept</span>
                       </div>
                     </div>
                     <div class="project-card">
@@ -684,7 +903,7 @@
                       </div>
                       <div class="links">
                         <span>Live</span>
-                        <a href="#">Demo</a>
+                        <span>Example concept</span>
                       </div>
                     </div>
                     <div class="project-card">
@@ -697,12 +916,17 @@
                       </div>
                       <div class="links">
                         <span>GitHub</span>
-                        <a href="#">Repo</a>
+                        <span>Example concept</span>
                       </div>
                     </div>
                   </div>
 
-                  <div class="outcome-box"><strong>Outcome:</strong> Build proof of your skills and gain real-world experience.</div>
+                  <div class="milestone-list" aria-label="Year three milestones">
+                    <div class="milestone-row"><span class="milestone-number">01</span><span>Deploy a full-stack project and document its architecture, setup and trade-offs.</span></div>
+                    <div class="milestone-row"><span class="milestone-number">02</span><span>Contribute through a team project, internship, hackathon or open-source work.</span></div>
+                    <div class="milestone-row"><span class="milestone-number">03</span><span>Turn project work into clear resume stories and interview examples.</span></div>
+                  </div>
+                  <div class="outcome-box"><strong>Year-end proof:</strong> two polished, deployed projects and specific examples of collaboration and impact.</div>
                 </div>
               </details>
             </div>
@@ -732,7 +956,7 @@
                   <div class="semester-grid">
                     <div class="semester-box">
                       <h4>Semester 7</h4>
-                      <p>Advanced DSA, system design, revision of core CS subjects and mock interview rounds.</p>
+                      <p>Review important DSA patterns and core CS topics. Learn to clarify requirements, design a simple service and explain the trade-offs in your choices.</p>
                       <ul>
                         <li>Advanced DSA</li>
                         <li>System Design</li>
@@ -742,7 +966,7 @@
                     </div>
                     <div class="semester-box">
                       <h4>Semester 8</h4>
-                      <p>Resume preparation, LinkedIn, aptitude, application strategy and final placement readiness.</p>
+                      <p>Tailor your resume for each role, practise technical and behavioural interviews, research employers and follow a steady, focused application routine.</p>
                       <ul>
                         <li>LinkedIn</li>
                         <li>Aptitude</li>
@@ -752,16 +976,13 @@
                     </div>
                   </div>
 
-                  <div class="job-checklist">
-                    <span><strong>✓</strong> DSA</span>
-                    <span><strong>✓</strong> Projects</span>
-                    <span><strong>✓</strong> Internship</span>
-                    <span><strong>✓</strong> GitHub</span>
-                    <span><strong>✓</strong> Resume</span>
-                    <span><strong>✓</strong> Interview Prep</span>
+                  <div class="milestone-list" aria-label="Year four milestones">
+                    <div class="milestone-row"><span class="milestone-number">01</span><span>Explain your strongest projects, technical decisions and lessons learned.</span></div>
+                    <div class="milestone-row"><span class="milestone-number">02</span><span>Complete realistic mock interviews and review gaps after each attempt.</span></div>
+                    <div class="milestone-row"><span class="milestone-number">03</span><span>Apply to suitable software and IT roles with a tailored, honest application.</span></div>
                   </div>
 
-                  <div class="outcome-box"><strong>Outcome:</strong> Be prepared for software/IT job opportunities with confidence and clarity.</div>
+                  <div class="outcome-box"><strong>Year-end proof:</strong> a focused portfolio, interview-ready project stories, and a repeatable job search plan.</div>
                 </div>
               </details>
             </div>
